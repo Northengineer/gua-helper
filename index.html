@@ -103,16 +103,21 @@
       { name: "水火既濟", judgement: "亨，小利貞", advice: "事已成，仍需守成。", type: "吉" }
     ];
 
-    function drawHexagram() {
-      const now = new Date();
-      const base = now.getHours() * 10000 + now.getMinutes() * 100 + now.getSeconds();
-      const intent = now.getMilliseconds();
-      const index = (base + intent) % hexagrams.length;
-      const hex = hexagrams[index];
+function drawHexagram() {
+  const now = new Date();
+  const base = now.getHours() * 10000 + now.getMinutes() * 100 + now.getSeconds();
+  const intent = now.getMilliseconds();
+  const index = (base + intent) % hexagrams.length;
+  const hex = hexagrams[index];
 
-      document.getElementById("hexagram").innerText = hex.name;
-      document.getElementById("judgement").innerText = "卦辭：" + hex.judgement;
-      document.getElementById("advice").innerText = "建議：" + hex.advice;
-    }
+  document.getElementById("hexagram").innerText = hex.name;
+  document.getElementById("judgement").innerText = "卦辭：" + hex.judgement;
+  document.getElementById("advice").innerText = "建議：" + hex.advice;
+  document.getElementById("result").innerHTML =
+    "整體：<span class='" +
+    (hex.type === "吉" ? "good" : hex.type === "凶" ? "bad" : "neutral") +
+    "'>" + hex.type + "</span>";
+}
+
   </script></body>
 </html>
