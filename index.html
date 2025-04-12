@@ -33,6 +33,10 @@
       cursor: pointer;
       background: white;
     }
+    .click-area:hover {
+  background: #f0f0f0;
+  border-color: #888;
+}
     .good {
   color: green;
   font-weight: bold;
@@ -52,11 +56,18 @@
   <h1>快速意念起卦</h1>
   <div class="tip">請閉眼默念問題，然後點擊下方區塊以起卦</div>  <div class="click-area" onclick="drawHexagram()">
     點此起卦
-  </div>  <div id="hexagram" class="section"></div>
-  <div id="judgement" class="section"></div>
-  <div id="advice" class="section"></div>  <script>
-    <div id="advice" class="section"></div>
-    <div id="result" class="section"></div>
+</div>
+<div id="hexagram" class="section"></div>
+<div id="judgement" class="section"></div>
+
+<!-- 只保留一次這行 -->
+<div id="advice" class="section"></div>
+
+<!-- 新增這一行「整體結果」 -->
+<div id="result" class="section"></div>
+
+  <script>
+
         const hexagrams = [
       { name: "乾為天", judgement: "元亨利貞", advice: "堅持正道，萬事起頭有勢。", type: "吉" },
       { name: "坤為地", judgement: "厚德載物", advice: "順勢而行，柔能克剛。", type: "吉" },
