@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>競技起卦助手</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fdf6ec;
+      color: #333;
+      text-align: center;
+      padding: 2em;
+    }
+    .hexagram {
+      font-size: 2em;
+      margin: 1em 0;
+    }
+    .judgement {
+      font-size: 1.5em;
+      color: #007700;
+    }
+    .advice {
+      font-size: 1.2em;
+      margin-top: 1em;
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+  <h1>競技起卦助手</h1>
+  <div class="hexagram" id="hexagram">正在起卦...</div>
+  <div class="judgement" id="judgement"></div>
+  <div class="advice" id="advice"></div>  <script>
+    // 卦列表（簡化版）
+    const hexagrams = [
+      { name: "乾為天", judgement: "吉", advice: "奮力一搏，時機正好。" },
+      { name: "坤為地", judgement: "凶", advice: "暫避鋒芒，以守為主。" },
+      { name: "水雷屯", judgement: "中吉", advice: "局勢未明，先觀察。" },
+      { name: "山水蒙", judgement: "凶", advice: "容易誤判，暫緩行動。" },
+      { name: "風火家人", judgement: "吉", advice: "配合隊友，團隊先行。" },
+      { name: "雷天大壯", judgement: "吉", advice: "果斷出擊，氣勢如虹。" },
+      { name: "火地晉", judgement: "吉", advice: "趁勝追擊，利於進攻。" },
+      { name: "澤水困", judgement: "凶", advice: "被動困局，宜守不宜攻。" }
+    ];
+
+    function getHexagram() {
+      const now = new Date();
+      const seed = now.getHours() * 10000 + now.getMinutes() * 100 + now.getSeconds();
+      const index = seed % hexagrams.length;
+      return hexagrams[index];
+    }
+
+    const hex = getHexagram();
+    document.getElementById("hexagram").innerText = hex.name;
+    document.getElementById("judgement").innerText = hex.judgement;
+    document.getElementById("advice").innerText = hex.advice;
+  </script></body>
+</html>
